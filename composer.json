@@ -1,0 +1,21 @@
+{
+    "name": "jerryhopper/apache-james-api-client-php",
+    "description":"php client library for use with Apache James mailserver management api",
+    "keywords":["php","apache","james","mailserver"],
+    "type":"library",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Jerry Hopper",
+            "email": "hopper.jerry@gmail.com",
+            "homepage":"https://jerryhopper.com"
+        }
+    ],
+    "homepage": "https://github.com/jerryhopper/apache-james-api-client-php",
+    "autoload": {
+        "psr-4": { "JerryHopper\\JamesApiClient\\": "src/" }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}
