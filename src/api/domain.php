@@ -42,7 +42,9 @@ class domain extends httpClient{
      */
     function exists($domainName){
         $res = $this->client->request('GET',$this->path.'/'.$domainName,[]);
-        $this->checkResponse($res,array(204, 400));
+
+        $this->checkResponse($res,array(204, 400,404));
+
         return $res;
     }
     /*

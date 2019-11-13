@@ -33,7 +33,7 @@ class httpClient
     {
 
         $client = new GuzzleHttp\Client();
-
+        die("xx");
         try {
                 $res = $client->request('GET', 'https://api.github.com/user', [
                     'auth' => ['user', 'pass']

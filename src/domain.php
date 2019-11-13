@@ -32,9 +32,9 @@ class domain {
     }
 
     public function create($domainName){
-
         try{
             $res = $this->exists($domainName);
+
         }catch(\Exception $e ){
             if($e->getCode()!=404){
                 throw new \Exception($e->getMessage(),$e->getCode());
@@ -51,7 +51,7 @@ class domain {
         $statuscode =  $res->getStatusCode();
 
         if($statuscode==400){
-            throw new \Exception($statuscode,$Message[$statuscode]);
+            throw new \Exception($Message[$statuscode],$statuscode);
         }
         return $this->response( $statuscode, $Message[$statuscode], $res->getBody()->getContents() );
     }
@@ -74,17 +74,20 @@ class domain {
         $Message[404] = 'The domain does not exist';
 
         $res = $this->api->exists($domainName);
+
         $statuscode =  $res->getStatusCode();
 
+
+
         if($statuscode==404 ){
-            throw new \Exception($statuscode,$Message[$statuscode]);
+            throw new \Exception($Message[$statuscode],$statuscode);
         }
 
         return $this->response( $statuscode, $Message[$statuscode], true );
     }
 
 
-    /*
+/*
     public function listAlias($dstdomain){
         $Message = array();
         $Message[200] = 'The domain aliases was successfully retrieved';
@@ -96,28 +99,30 @@ class domain {
 
         return $this->response( $statuscode, $Message[$statuscode], $res->getBody()->getContents() );
     }
-    public function createAlias($dstdomain,$srcdomain){
+
+    public function createAlias($domainalias,$fordomain){
         $Message = array();
         $Message[204] = 'The redirection now exists';
         $Message[400] = 'source.domain.tld or destination.domain.tld have an invalid syntax - or are the same.';
         $Message[404] = 'source.domain.tld are not part of handled domains.';
 
-        $res =  $this->api->createAlias($dstdomain,$srcdomain);
+        $res =  $this->api->createAlias($domainalias,$fordomain);
         $statuscode =  $res->getStatusCode();
 
         return $this->response( $statuscode, $Message[$statuscode], $res->getBody()->getContents() );
     }
-    public function deleteAlias($dstdomain,$srcdomain){
+    public function deleteAlias($domainalias,$fordomain){
         $Message = array();
         $Message[204] = 'The redirection now exists';
         $Message[400] = 'source.domain.tld or destination.domain.tld have an invalid syntax - or are the same.';
         $Message[404] = 'source.domain.tld are not part of handled domains.';
 
-        $res =  $this->api->deleteAlias($dstdomain,$srcdomain);
+        $res =  $this->api->deleteAlias($domainalias,$fordomain);
         $statuscode =  $res->getStatusCode();
 
         return $this->response( $statuscode, $Message[$statuscode], $res->getBody()->getContents() );
     }
     */
+
 
 }

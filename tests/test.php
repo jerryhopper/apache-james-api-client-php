@@ -12,8 +12,16 @@ $domain = new domain($baseuri);
 $users  = new user($baseuri);
 
 
-print_r($users->create('someuser@somedomain',"somepassword"));
-print_r($users->list());
+
+
+// list domain
+print_r($domain->list());
+//print_r($users->list());
+
+
+
+die();
+
 
 
 print_r($users->delete('someuser@somedomain'));
