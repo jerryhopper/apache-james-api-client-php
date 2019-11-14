@@ -8,35 +8,22 @@ require ("./vendor/autoload.php");
 
 $baseuri="http://docker:8000";
 $domain = new domain($baseuri);
-
-$users  = new user($baseuri);
-
-
-
-
-// list domain
-print_r($domain->list());
-//print_r($users->list());
+$user  = new user($baseuri);
 
 
 
 die();
-
-
-
-print_r($users->delete('someuser@somedomain'));
-print_r($users->list());
-
-
-
-
-
-
-
-
-
 // list domain
-print_r($domain->list());
+
+
+print_r($user->list());
+
+print_r($user->create("some@us.er","somepassword"));
+
+print_r($user->delete("some@us.er"));
+
+
+
 
 // create domain.
 print_r($domain->create("somedomain.com"));
